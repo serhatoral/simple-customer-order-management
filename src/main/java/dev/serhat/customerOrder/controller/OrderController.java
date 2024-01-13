@@ -3,6 +3,7 @@ package dev.serhat.customerOrder.controller;
 import dev.serhat.customerOrder.dto.CreateOrderRequest;
 import dev.serhat.customerOrder.dto.OrderDto;
 import dev.serhat.customerOrder.service.OrderService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<OrderDto> createOrder(@RequestBody CreateOrderRequest request){
+    public ResponseEntity<OrderDto> createOrder(@Valid @RequestBody CreateOrderRequest request){
         return ResponseEntity.ok(orderService.create(request));
     }
 }
